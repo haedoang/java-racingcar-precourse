@@ -50,4 +50,12 @@ public class Cars {
         return result;
     }
 
+    public void run() {
+        for(Car car : carList) {
+            car.run();
+            car.print();
+        }
+        System.out.println();
+    }
+
 }

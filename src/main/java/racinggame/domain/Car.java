@@ -2,6 +2,7 @@ package racinggame.domain;
 
 import jdk.internal.org.objectweb.asm.tree.MethodInsnNode;
 import nextstep.utils.Randoms;
+import racinggame.common.Constants;
 
 /**
  * packageName : racinggame.domain
@@ -42,6 +43,14 @@ public class Car {
 
     public void run() {
         this.setStatus(this.moveOrStop());
+    }
+
+    public void print() {
+        String marker = "";
+        for(int i = 0; i < this.distance; i++) {
+            marker += Constants.DISTANCE_MARK;
+        }
+        System.out.println(this.getName() + " : " + marker);
     }
 
 }
