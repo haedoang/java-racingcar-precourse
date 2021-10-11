@@ -8,9 +8,9 @@ package racinggame.domain;
  * description :
  */
 public class CarName {
-    private final int MIN_LENGTH = 1;
-    private final int MAX_LENGTH = 5;
-    private String name;
+    private static final int MIN_LENGTH = 1;
+    private static final int MAX_LENGTH = 5;
+    private final String name;
 
     public CarName(String name) {
         if(name == null) throw new NullPointerException("차 이름은 null값을 가질 수 없습니다.");

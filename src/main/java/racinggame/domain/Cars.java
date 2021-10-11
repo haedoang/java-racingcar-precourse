@@ -12,8 +12,8 @@ import java.util.Set;
  * description :
  */
 public class Cars {
-    private final int MIN_COUNT = 1;
-    private List<Car> carList;
+    private static final int MIN_COUNT = 1;
+    private final List<Car> carList;
 
     public Cars(List<Car> carList) {
         if(carList == null) throw new NullPointerException("리스트는 null값일 수 없습니다.");
