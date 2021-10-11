@@ -1,8 +1,8 @@
 package racinggame.domain;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+
+import static racinggame.common.Constants.STRING_SEPARATOR;
 
 /**
  * packageName : racinggame.domain
@@ -30,6 +30,24 @@ public class Cars {
 
     public List<Car> getCarList() {
         return carList;
+    }
+
+    /** 가장 높은 distance */
+    public int getMaxDistance() {
+        int maxDistance = 0;
+        for(Car car : carList) {
+            maxDistance = Math.max(car.getDistance(), maxDistance);
+        }
+        return maxDistance;
+    }
+
+    public String getWinners() {
+        int maxDistance = this.getMaxDistance();
+        String result = "";
+        for(Car car : carList) {
+            result += (car.getDistance() == maxDistance) ? (result.length() == 0) ? car.getName() : STRING_SEPARATOR + car.getName() : "";
+        }
+        return result;
     }
 
 }

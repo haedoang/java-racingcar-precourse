@@ -39,4 +39,9 @@ public class Car {
     public void setStatus(CarStatus status) {
         if(status.isMove()) this.distance = this.distance + MOVE_STEP;
     }
+
+    public void run() {
+        this.setStatus(this.moveOrStop());
+    }
+
 }

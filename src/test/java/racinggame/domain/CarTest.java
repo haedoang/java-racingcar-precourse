@@ -129,4 +129,15 @@ public class CarTest {
         assertThat(count).isEqualTo(moveCnt + stopCnt);
         assertThat(moveCnt).isEqualTo(car.getDistance());
     }
+
+    @Test
+    void T7_전진_로직_검증2() {
+        Car car = new Car("car1");
+        int count = 10;
+        for(int i = 0; i < count; i++) {
+            car.run();
+        }
+        System.out.println(car.getDistance());
+        assertThat(car.getDistance()).isLessThanOrEqualTo(count);
+    }
 }

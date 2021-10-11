@@ -64,4 +64,27 @@ public class CarsTest {
                 .hasMessageContaining("리스트는 null값일 수 없습니다.");
     }
 
+    @Test
+    void T5_자동차_최대거리구하기() {
+        /** GIVEN */
+        int count = 10;
+        List<Car> carList = new ArrayList<>();
+        carList.add(new Car("a"));
+        carList.add(new Car("b"));
+        carList.add(new Car("c"));
+
+        /** WHEN */
+        Cars cars = new Cars(carList);
+
+        for(int i = 0; i < count; i++) {
+            for(Car car : cars.getCarList()) car.run();
+        }
+
+        /** THEN */
+        int maxDistance = cars.getMaxDistance();
+
+        for(Car car : cars.getCarList()) {
+            assertThat(car.getDistance()).isLessThanOrEqualTo(maxDistance);
+        }
+    }
 }
