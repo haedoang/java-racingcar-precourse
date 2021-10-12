@@ -70,17 +70,14 @@ public class CarTest {
     void T6_자동차_전진() {
         /** GIVEN */
         Car car = new Car("car");
-
         /** WHEN */
         int distance = car.getDistance();
-
         /** THEN */
         assertThat(distance).isEqualTo(0);
-
         /** WHEN */
         car.setStatus(CarStatus.MOVE);
         int afterDistance = car.getDistance();
-
+        /** THEN */
         assertThat(afterDistance).isEqualTo(1);
         assertThat(afterDistance).isGreaterThan(distance);
     }
@@ -98,6 +95,19 @@ public class CarTest {
         String print = car.print();
         /** THEN */
         assertThat(print).isEqualTo(carName + " : " + Constants.DISTANCE_MARK);
+    }
+
+    @Test
+    void T8_자동차_반복수행() {
+        /** GIVEN */
+        Car car = new Car("a");
+        int count = 10;
+        /** WHEN */
+        for(int i = 0; i < count; i++) {
+            car.run();
+        }
+        /** THEN */
+        assertThat(car.getDistance()).isLessThanOrEqualTo(count);
     }
 
 }

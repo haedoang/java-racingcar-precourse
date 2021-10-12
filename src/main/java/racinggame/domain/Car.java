@@ -18,7 +18,7 @@ public class Car {
     private static final int MAX_NUMBER = 9;
     private static final int MAX_STOP_NUMBER = 3;
 
-    private CarName name;
+    private final CarName name;
     private int distance;
 
     public Car(String carName) {
@@ -33,6 +33,11 @@ public class Car {
         return distance;
     }
 
+    /** 반복해서 수행할 run 메소드 구현 */
+    public void run() {
+        this.setStatus(this.moveOrStop());
+    }
+
     /** Move Status 일 때만 전진한다. */
     public void setStatus(CarStatus status) {
         if(status.isMove()) distance = distance + MOVE_STEP;
@@ -44,6 +49,7 @@ public class Car {
         return randomNumber > MAX_STOP_NUMBER ? CarStatus.MOVE : CarStatus.STOP;
     }
 
+    /** 결과를 리턴한다. */
     public String print() {
         String marker =  "";
         for(int i = 0; i < distance; i++) {
