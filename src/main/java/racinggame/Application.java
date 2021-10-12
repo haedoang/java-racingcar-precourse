@@ -9,6 +9,10 @@ public class Application {
         // TODO 자동차 경주 게임 구현
         BaseUI ui = new RacingUI();
         Cars cars = ui.createCars();
-        //System.out.println(cars.getCarList().size());
+        if(cars == null) return;
+        int count = ui.setCount();
+
+        ui.play(cars, count);
+
     }
 }

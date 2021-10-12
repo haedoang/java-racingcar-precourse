@@ -15,5 +15,5 @@ public interface BaseUI {
 
     int setCount();
 
-    void play();
+    void play(Cars cars, int count);
 }

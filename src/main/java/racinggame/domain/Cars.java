@@ -48,14 +48,18 @@ public class Cars {
     /** Winner print */
     public String getWinners() {
         int maxDistance = this.getMaxDistance();
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for(Car car : carList) {
-            result += (car.getDistance() == maxDistance) ? (result.length() == 0) ? car.getName() : STRING_SEPARATOR + car.getName() : "";
+            result.append((car.getDistance() == maxDistance) ? (result.length() == 0) ? car.getName() : STRING_SEPARATOR + car.getName() : "");
         }
-        return result;
+        return result.toString();
     }
 
     public void run() {
-        for(Car car : carList) car.run();
+        for(Car car : carList) {
+            car.run();
+            System.out.println(car.print());
+        }
+        System.out.println();
     }
 }

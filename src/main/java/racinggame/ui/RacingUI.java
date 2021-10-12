@@ -26,10 +26,7 @@ public class RacingUI implements BaseUI {
             String carNames = Console.readLine();
             List<Car> carList = createCarList(carNames);
             return new Cars(carList);
-        } catch(IllegalArgumentException e) {
-            System.out.println(MSG_ERROR_TEMPLATE + " " +e.getMessage());
-            return createCars();
-        } catch(NullPointerException e) {
+        } catch(IllegalArgumentException | NullPointerException e) {
             System.out.println(MSG_ERROR_TEMPLATE + " " +e.getMessage());
             return createCars();
         }
@@ -46,11 +43,25 @@ public class RacingUI implements BaseUI {
 
     @Override
     public int setCount() {
-        return 0;
+        try {
+            System.out.println(Constants.MSG_INPUT_TRY_COUNTS);
+            String inputNumber = Console.readLine();
+            return new PositiveNumber(Integer.parseInt(inputNumber)).getNo();
+        } catch(NumberFormatException e) {
+            System.out.println(Constants.MSG_ERROR_TEMPLATE + " " + "숫자만 입력가능합니다.");
+            return setCount();
+        } catch(IllegalArgumentException | NullPointerException e) {
+            System.out.println(Constants.MSG_ERROR_TEMPLATE + " " + e.getMessage());
+            return setCount();
+        }
     }
 
     @Override
-    public void play() {
-
+    public void play(Cars cars, int count) {
+        System.out.println(Constants.MSG_RESULT);
+        for(int i = 0; i < count; i++) {
+            cars.run();
+        }
+        System.out.println(Constants.MSG_WINNER_PREFIX + cars.getWinners() + Constants.MSG_WINNER_SUFFIX);
     }
 }

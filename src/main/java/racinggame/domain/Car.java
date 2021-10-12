@@ -1,7 +1,6 @@
 package racinggame.domain;
 
 import nextstep.utils.Randoms;
-import racinggame.common.Constants;
 
 import static racinggame.common.Constants.*;
 
@@ -51,9 +50,9 @@ public class Car {
 
     /** 결과를 리턴한다. */
     public String print() {
-        String marker =  "";
+        StringBuilder marker = new StringBuilder();
         for(int i = 0; i < distance; i++) {
-            marker += DISTANCE_MARK;
+            marker.append(DISTANCE_MARK);
         }
         return this.getName() + " : " + marker;
     }
